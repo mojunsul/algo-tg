@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - CI-test
     paths:
       - README.md
 
@@ -60,5 +61,5 @@ jobs:
           fi
 
           git commit -m "chore: update week and generate daily problem folders [skip ci]"
-          git pull --rebase origin main
+          git pull --rebase origin "${{ github.ref_name }}"
           git push origin "HEAD:${{ github.ref_name }}"
